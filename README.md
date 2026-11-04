@@ -33,8 +33,8 @@ IT ELEC01 – Advanced Web Development
 8. Open http://localhost:8000
 
 ## Pages
-- Public portfolio: /
+- Public portfolio: /Pico_Portfolio
 - Manage [section]: /[your-route]
 
 ## Author
-Your Name
+Emmanuel Pico
