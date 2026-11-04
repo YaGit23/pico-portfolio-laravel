@@ -1,53 +1,36 @@
 @import 'tailwindcss';
-
 @plugin 'tailwindcss-animate';
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-
 @custom-variant dark (&:is(.dark *));
-
 @theme {
-    --font-sans:
-        'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
-
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-
     --color-card: var(--card);
     --color-card-foreground: var(--card-foreground);
-
     --color-popover: var(--popover);
     --color-popover-foreground: var(--popover-foreground);
-
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
-
     --color-secondary: var(--secondary);
     --color-secondary-foreground: var(--secondary-foreground);
-
     --color-muted: var(--muted);
     --color-muted-foreground: var(--muted-foreground);
-
     --color-accent: var(--accent);
     --color-accent-foreground: var(--accent-foreground);
-
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
-
     --color-border: var(--border);
     --color-input: var(--input);
     --color-ring: var(--ring);
-
     --color-chart-1: var(--chart-1);
     --color-chart-2: var(--chart-2);
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
-
     --color-sidebar: var(--sidebar-background);
     --color-sidebar-foreground: var(--sidebar-foreground);
     --color-sidebar-primary: var(--sidebar-primary);
@@ -58,6 +41,7 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -66,12 +50,13 @@
   If we ever want to remove these styles, we need to add an explicit border
   color utility to any element that depends on these defaults.
 */
+
 @layer base {
     *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
+     ::after,
+     ::before,
+     ::backdrop,
+     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
 }
@@ -151,8 +136,68 @@
     * {
         @apply border-border;
     }
-
     body {
         @apply bg-background text-foreground;
+    }
+}
+
+
+/* ===== Portfolio theme ===== */
+
+@theme {
+    --color-ink: #0f0e0c;
+    --color-panel: #1a1814;
+    --color-line: #2e2a23;
+    --color-paper: #f1ede4;
+    --color-mute: #a39d92;
+    --color-amber: #f4b860;
+    --font-serif: 'Newsreader', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer components {
+    .card {
+        @apply rounded-2xl border border-line bg-panel p-5;
+    }
+    .lbl {
+        @apply font-mono text-xs text-mute;
+    }
+    .tag {
+        @apply rounded-md border border-line px-2 py-1 font-mono text-xs text-mute;
+    }
+    .btn {
+        @apply inline-flex items-center justify-center rounded-full bg-amber px-6 py-3 font-semibold text-ink;
+    }
+    .btn:hover {
+        filter: brightness(1.1);
+    }
+    .field {
+        @apply w-full rounded-xl border border-line bg-ink px-4 py-3 text-paper;
+    }
+    .h2 {
+        @apply font-serif text-3xl text-paper;
+    }
+}
+
+@media (min-width: 48rem) {
+    .h2 {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+}
+
+*:focus-visible {
+    outline: 2px solid #f4b860;
+    outline-offset: 2px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }
